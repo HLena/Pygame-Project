@@ -66,9 +66,17 @@ rect2 = pygame.Rect(pos_x + 30,pos_y + 30,30,60)
 
 
 #----------- incluyendo texto-------------
-text = pygame.font.Font(None,30)
-my_text = text.render("hola",0,(0,0,0),(255,255,255))
+# text = pygame.font.Font(None,30)
+# my_text = text.render("hola",0,(0,0,0),(255,255,255))
+Fuente = pygame.font.SysFont("Arial",30)
+
+aux = 1
 while True:
+    time = pygame.time.get_ticks()/1000
+    if aux == time:
+        aux +=1
+        print time
+
     window.fill(dark)
     # window.blit(image1,(pos_x,pos_y))
     pygame.draw.rect(window,(145,25,68),rect1)
@@ -111,7 +119,7 @@ while True:
         #         print("tecla <- libre")
         #     elif event.key == pygame.K_RIGHT:
         #         print("tecla -> libre")
-    window.blit(my_text,(10,10))
+    # window.blit(my_text,(10,10))
     # colision_rect(rect1,rect2)
     # limites de la ventana
     # if limit:
@@ -129,5 +137,6 @@ while True:
 
     # obetener posicion del mouse
     # pos_x,pos_y = pygame.mouse.get_pos()
-
+    contador = Fuente.render("Time: " + str(time),0,(255,255,255))
+    window.blit(contador,(100,100))
     pygame.display.update()
